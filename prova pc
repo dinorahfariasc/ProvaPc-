@@ -1,0 +1,87 @@
+# questao 1 
+# Entrada: valor da renda
+def imposto_devido(renda):
+  # Escreva seu código aqui
+  imposto = 0.0
+  if renda > 2000 and renda <= 3000:
+    renda -= 2000
+    imposto = renda * 0.08
+  
+  elif renda > 3000 and renda <= 4500: # 3002
+    renda -= 2000 # 1002
+    if renda > 1000:
+      renda2 = renda - 1000 # 2 
+      renda -= renda2
+      imposto += renda * 0.08 # 1002 
+      imposto += renda2 * 0.18 # 2
+  
+  elif renda >4500: # 4501
+    renda -= 2000 #2501
+    if renda > 2500:
+      renda3 = renda - 2500 # 1
+      renda2 = renda - 1000 - renda3 # 1501
+      renda -= renda3 # 2501 - 1 = 2000
+      renda -= renda2 # 2000 - 1000 = 1000
+      
+      imposto += renda * 0.08 # 1000 = 80
+      imposto += renda2 * 0.18 
+      imposto += renda3 * 0.28
+    
+      
+    
+  
+          
+
+  # Retorna o imposto devido
+  return imposto
+
+# Entrada e saída do programa -- NÃO ALTERAR
+renda = float(input())
+print(imposto_devido(renda))
+
+
+
+
+
+# questao 2 
+def aprovado_UFRN(nota1, nota2, nota3, reposição):
+  # Escreva seu código aqui
+  notas = [nota1,nota2,nota3]
+  minima = min(notas)
+  if minima < 3:
+    if reposição > minima:
+      notas[notas.index(minima)] = reposição
+      if reposição >= 3:
+        if sum(notas)/3 >= 5:
+          return True
+        else:
+            return False
+      if reposição < 3:
+        if sum(notas)/3 >=7:
+          return True
+        else: 
+          return False
+    elif reposição < minima:
+      if sum(notas)/3 >=5:
+        return True
+      else:
+        return False
+  elif sum(notas)/3 >= 5:
+    return True
+  else:
+    return False
+  
+  
+
+ 
+  # Saídas: True (aprovado) ou False (reprovado)
+  #return True
+
+# Entrada e saída do programa -- NÃO ALTERAR
+nota1 = float(input())
+nota2 = float(input())
+nota3 = float(input())
+reposição = float(input())
+
+print(aprovado_UFRN(nota1, nota2, nota3, reposição))
+
